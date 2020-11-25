@@ -9,8 +9,24 @@ def SURGE_DOMAIN = "tm008558.surge.sh"
 // Work
 pipeline {
    agent { label 'jenkins-aws' }
-//   triggers { pollSCM('H/15 * * * *')
-//       }
+   triggers {
+    GenericTrigger(
+      genericVariables: [
+        [key: 'ref', value: '$.ref']
+      ],
+
+      causeString: 'Triggered on $ref',
+
+      token: 'LiHdVSYNri',
+      //token: '',
+
+      printContributedVariables: true,
+      printPostContent: true,
+
+      regexpFilterText: '', 
+      regexpFilterExpression: ''
+     )
+     }       }
    stages {
 //     stage('Create Project') {
 //      steps {
