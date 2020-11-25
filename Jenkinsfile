@@ -2,7 +2,7 @@
 def _GATSBY_URL = "https://github.com/devopspwc/wptest"
 def _PROJECT_URL = "github.com/pwc-doit/devops"
 def _PROJECT_DIR = "grid"
-def _DIR = "test-build"
+def _DIR = "test-build-only"
 def SURGE_LOGIN = "tommassie@hotmail.com"
 def SURGE_DOMAIN = "tm008558.surge.sh"
 
@@ -12,22 +12,22 @@ pipeline {
 //   triggers { pollSCM('H/15 * * * *')
 //       }
    stages {
-//     stage('Create Project') {
-//      steps {
-//          sh label: '', script: """
-//          node -v
-//          gatsby -v
-//          if [ -d "$_DIR" ]; then
-//            echo "Removing existing project files."
-//            rm -rf "$_DIR"
-//            echo "Re-Loading Project"
-//            gatsby new "$_DIR" "$_GATSBY_URL"
-//          else
-//            echo "Loading project"
-//            gatsby new "$_DIR" "$_GATSBY_URL"
-//          fi"""
-//         }
-//       }
+     stage('Create Project') {
+      steps {
+          sh label: '', script: """
+          node -v
+          gatsby -v
+          if [ -d "$_DIR" ]; then
+            echo "Removing existing project files."
+            rm -rf "$_DIR"
+            echo "Re-Loading Project"
+            gatsby new "$_DIR" "$_GATSBY_URL"
+          else
+            echo "Loading project"
+            gatsby new "$_DIR" "$_GATSBY_URL"
+          fi"""
+         }
+       }
       stage('Build') {
         steps {
           dir ("${_DIR}") {
