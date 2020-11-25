@@ -26,7 +26,7 @@ pipeline {
       regexpFilterText: '', 
       regexpFilterExpression: ''
      )
-     }       }
+     }
    stages {
 //     stage('Create Project') {
 //      steps {
