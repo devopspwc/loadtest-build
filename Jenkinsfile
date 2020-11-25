@@ -44,14 +44,14 @@ pipeline {
 //          fi"""
 //         }
 //       }
-//      stage('Build') {
-//        steps {
-//          dir ("${_DIR}") {
-//           sh label: '', script: '''
-//               gatsby build'''
-//          }
-//       }
-//     }
+      stage('Build') {
+        steps {
+          dir ("${_DIR}") {
+           sh label: '', script: '''
+               gatsby build'''
+          }
+       }
+     }
 //     stage('Release') {
 //      steps {
 //          withCredentials([string(credentialsId: 'surge_token', variable: 'surge_t')]) {
