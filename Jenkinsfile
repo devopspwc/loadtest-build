@@ -44,28 +44,28 @@ pipeline {
 //          fi"""
 //         }
 //       }
-      stage('Build') {
-        steps {
-          dir ("${_DIR}") {
-           sh label: '', script: '''
-               gatsby build'''
-          }
-       }
-     }
-     stage('Release') {
-      steps {
-          withCredentials([string(credentialsId: 'surge_token', variable: 'surge_t')]) {
-          dir ("${env.WORKSPACE}/${_DIR}/public") {
-            sh label: '', script: """
-            echo 'machine surge.surge.sh
-                login tommassie@hotmail.com' | tee ~/.netrc
-            echo '    password' "$surge_t" | tee -a ~/.netrc
-            surge --project . --domain tm008558.surge.sh
-            """
-            }
-          }
-        }
-      }
+//      stage('Build') {
+//        steps {
+//          dir ("${_DIR}") {
+//           sh label: '', script: '''
+//               gatsby build'''
+//          }
+//       }
+//     }
+//     stage('Release') {
+//      steps {
+//          withCredentials([string(credentialsId: 'surge_token', variable: 'surge_t')]) {
+//          dir ("${env.WORKSPACE}/${_DIR}/public") {
+//            sh label: '', script: """
+//            echo 'machine surge.surge.sh
+//                login tommassie@hotmail.com' | tee ~/.netrc
+//            echo '    password' "$surge_t" | tee -a ~/.netrc
+//            surge --project . --domain tm008558.surge.sh
+//            """
+//            }
+//          }
+//        }
+//      }
 //     stage('Clone Project') {
 //      steps {
 //        git credentialsId: 'fd41c67e-7760-4743-a88d-523b55ed54fa', url: 'https://github.com/pwc-doit/devops'
